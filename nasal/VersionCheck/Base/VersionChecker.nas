@@ -154,7 +154,7 @@ var VersionChecker = {
                 repo = parts[-1];   # Last element is a dir name.
             } else {
                 # Own hosted project, example:
-                # https://sourceforge.net/p/canvas-skeleton/code/ci/HEAD/tree
+                # https://sourceforge.net/p/framework/code/ci/HEAD/tree
                 #         ^               ^ ^
                 #         0               1 2
 

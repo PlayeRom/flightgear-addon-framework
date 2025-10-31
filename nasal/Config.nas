@@ -26,14 +26,14 @@ var Config = {
     # These settings also ensure that files from the `/nasal/Utils/VersionCheck/` directory that are not needed will
     # not be loaded when the simulator is started.
     # This also requires the URL to be provided in the `<code-repository>` tag in the `/addon-metadata.xml` file, e.g.:
-    # `<code-repository type="string">https://github.com/PlayeRom/flightgear-addon-canvas-skeleton</code-repository>`.
+    # `<code-repository type="string">https://github.com/PlayeRom/flightgear-addon-canvas-framework</code-repository>`.
     #
     # If you host your project on the official FGAddon repository on SourceForge, you provide the URL as e.g.:
     # https://sourceforge.net/p/flightgear/fgaddon/HEAD/tree/trunk/Addons/Framework (where your add-on directory
     # must be the last element of the URL).
     #
     # If you hosted your project on own SourceForge, then URL should be like:
-    # https://sourceforge.net/p/canvas-skeleton/code/ci/HEAD/tree
+    # https://sourceforge.net/p/framework/code/ci/HEAD/tree
     #
     useVersionCheck: {
         #

@@ -60,6 +60,8 @@ Then, to update the framework, for example, from the `main` branch, simply run:
 git subtree pull --prefix=framework git@github.com:PlayeRom/flightgear-addon-framework.git main --squash -m "Update framework"
 ```
 
+Alternatively, you can also download [Canvas Skeleton](https://github.com/PlayeRom/flightgear-addon-canvas-skeleton), which already includes this Framework and sample canvas dialogs with an example Widget.
+
 ## How to use it
 
 Copy the contents of this framework's `/framework/addon-main.nas` file and paste it into your add-on's `/addon-main.nas` file and make the following modifications:
