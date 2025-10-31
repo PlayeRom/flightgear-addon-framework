@@ -89,12 +89,16 @@ var Hooks = {
     #
     # Create non-Canvas objects here.
     #
+    # @return void
+    #
     onInit: func {
         # TODO: crate objects here...
     },
 
     #
     # Create Canvas objects here.
+    #
+    # @return void
     #
     onInitCanvas: func {
         # TODO: crate objects here...
@@ -103,17 +107,19 @@ var Hooks = {
     #
     # Remove all objects here.
     #
+    # @return void
+    #
     onUninit: func {
         # TODO: release objects here...
     },
 
     #
-    # For the menu with 'name', which is disabled while the Canvas is loading,
+    # For the menu with `<name>`, which is disabled while the Canvas is loading,
     # you can specify here the names of the menu items that should not be enabled
     # automatically, but you can decide in your code when to enable them again,
-    # using gui.menuEnable().
+    # using `gui.menuEnable()`.
     #
-    # @return hash  Key as menu name from addon-menubar-items.xml, value whatever.
+    # @return hash  Key as menu name from addon-menubar-items.xml, value whatever (nil).
     #
     excludedMenuNamesForEnabled: func {
         return {};

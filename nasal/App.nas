@@ -14,7 +14,7 @@ io.include('Loader.nas');
 io.include('Utils/FGVersion.nas');
 
 #
-# Global object of addons.Addon.
+# Global object of addons.Addon ghost.
 #
 var g_Addon = nil;
 
@@ -24,9 +24,7 @@ var g_Addon = nil;
 var g_FGVersion = FGVersion.new();
 
 #
-# Global aliases for boolean types to distinguish the use of "int" from "bool".
-# NOTE: unfortunately, it doesn't work as an assignment of a default value for a function parameter!
-# FlightGear from version 2024.1.1 supports the `true` and `false` keywords natively.
+# For older versions of FlightGear, add the `true` and `false` aliases as values ​​1 and 0.
 #
 if (g_FGVersion.lowerThan('2024.1.1')) {
     io.include('Boolean.nas');
@@ -45,7 +43,7 @@ var g_isHook = func(name) {
 };
 
 #
-# Main Addon class for load and run all submodules.
+# Main add-on class for load and run all submodules.
 #
 var App = {
     #
