@@ -7,10 +7,11 @@ Contributing Guidelines
 2. Maximum line length: **120** characters.
 3. Names of classes in **PascalCase**, methods and variables in **camelCase**.
 4. Capitalize constants: MY_CONSTANT.
-5. One class per file and file name same as class name.
-6. Write descriptions and comments for functions/methods above the function name.
-7. Leave one extra line at the bottom of each file.
-8. Don't leave whitespace at the ends of lines. A good editor handles this automatically by removing whitespace when saving the file.
+5. Private and protected methods or members must start with an underscore `_`.
+6. One class per file and file name same as class name.
+7. Write descriptions and comments for functions/methods above the function name.
+8. Leave one extra line at the bottom of each file.
+9. Don't leave whitespace at the ends of lines. A good editor handles this automatically by removing whitespace when saving the file.
 
 ## Formatting Guidelines
 
