@@ -245,10 +245,10 @@ var VersionChecker = {
     },
 
     #
-    # If string starts with "v", or "v."", remove this prefix.
+    # If string starts with "v", or "v.", remove this prefix.
     #
     # @param  string  strVersion
-    # @return string  Version without "v."" prefix.
+    # @return string  Version without "v." prefix.
     #
     _removeVPrefix: func(strVersion) {
         strVersion = string.trim(strVersion, -1, func(c) c == `v` or c == `V`);

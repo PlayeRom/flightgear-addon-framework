@@ -10,21 +10,6 @@
 #
 
 #
-# MY_LOG_LEVEL is using in Log.print() to quickly change all logs visibility used in addon's namespace.
-# Possible values: LOG_ALERT, LOG_WARN, LOG_INFO, LOG_DEBUG, LOG_BULK.
-#
-var MY_LOG_LEVEL = LOG_WARN;
-
-#
-# Global flag to enable dev mode.
-# You can use this flag to condition on heavier logging that shouldn't be
-# executed for the end user, but you want to keep it in your code for development
-# purposes. This flag will be set to true automatically when you use an .env
-# file with DEV_MODE=true.
-#
-var g_isDevMode = false;
-
-#
 # Global object of VersionChecker.
 #
 var g_VersionChecker = nil;
@@ -39,8 +24,6 @@ var Bootstrap = {
     # @return void
     #
     init: func {
-        me._initDevMode();
-
         g_VersionChecker = VersionChecker.make();
 
         if (g_isHook('onInit')) {
@@ -100,38 +83,5 @@ var Bootstrap = {
 
             menu.toggleItems(true, excluded);
         });
-    },
-
-    #
-    # Handle development mode (.env file).
-    #
-    # @return void
-    #
-    _initDevMode: func {
-        if (!Config.dev.useEnvFile) {
-            return;
-        }
-
-        var env = DevEnv.new();
-
-        var logLevel = env.getValue('MY_LOG_LEVEL');
-        if (logLevel != nil) {
-            MY_LOG_LEVEL = logLevel;
-        }
-
-        g_isDevMode = env.getBoolValue('DEV_MODE');
-
-        if (g_isDevMode) {
-            var reloadMenu = DevReloadMenu.new();
-
-            env.getBoolValue('RELOAD_MENU')
-                ? reloadMenu.addMenu()
-                : reloadMenu.removeMenu();
-
-            DevMultiKeyCmd.new()
-                .addReloadAddon(env.getValue('RELOAD_MULTIKEY_CMD'))
-                .addRunTests(env.getValue('TEST_MULTIKEY_CMD'))
-                .finish();
-        }
     },
 };

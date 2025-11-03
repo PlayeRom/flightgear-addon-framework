@@ -11,6 +11,7 @@
 
 io.include('Config.nas');
 io.include('Loader.nas');
+io.include('Dev/DevMode.nas');
 io.include('Utils/FGVersion.nas');
 
 #
@@ -57,12 +58,9 @@ var App = {
     load: func(addon, aliasNamespace = nil) {
         g_Addon = addon;
 
-        var namespace = globals.addons.getNamespaceName(g_Addon);
+        DevMode.init();
 
-        if (aliasNamespace != nil) {
-            # Create an alias to the add-on namespace for easier reference e.g. in addon-menubar-items.xml:
-            globals[aliasNamespace] = globals[namespace];
-        }
+        var namespace = me._getNamespace(aliasNamespace);
 
         Loader.new().load(g_Addon.basePath, namespace);
 
@@ -70,10 +68,30 @@ var App = {
     },
 
     #
+    # Unload add-on.
+    #
     # @return void
     #
     unload: func {
         Log.print('unload');
         Bootstrap.uninit();
+    },
+
+    #
+    # Get namespace name of add-on and create alias for this namespace if specified.
+    # This is the same namespace which is created by FlightGear based on add-on ID.
+    #
+    # @param  string|nil  aliasNamespace
+    # @return string
+    #
+    _getNamespace: func(aliasNamespace = nil) {
+        var namespace = globals.addons.getNamespaceName(g_Addon);
+
+        if (aliasNamespace != nil) {
+            # Create an alias to the add-on namespace for easier reference e.g. in addon-menubar-items.xml:
+            globals[aliasNamespace] = globals[namespace];
+        }
+
+        return namespace;
     },
 };

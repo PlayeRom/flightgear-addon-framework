@@ -11,15 +11,9 @@
 
 #
 # Framework configuration.
-# Change the following options as needed.
+# Change the following options as needed in your `main` function in `addon-main.nas` file.
 #
 var Config = {
-    #
-    # List of the Nasal files that should not be loaded. Files must be specified with a path relative to the add-on's
-    # root directory and must start with `/` (where `/` represents the add-on's root directory).
-    #
-    excludedFiles: [],
-
     #
     # Options related to checking for a newer version of the add-on. Only one `enabled` flag should be set to `true`,
     # or none at all. For information on how version checking works, see the file `/nasal/Utils/VersionCheck/README.md`.
