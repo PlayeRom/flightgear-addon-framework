@@ -1,5 +1,5 @@
-Framework Add-on for FlightGear
-===============================
+FlightGear Add-on Framework
+===========================
 
 This is a Framework project containing a set of classes and mechanisms to help create add-ons for FlightGear.
 
