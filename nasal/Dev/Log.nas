@@ -98,23 +98,13 @@ var Log = {
     },
 
     #
-    # Get full log message.
-    #
-    # @param  vector  msgs
-    # @return string
-    #
-    _getFullMessage: func(msgs) {
-        return g_Addon.name ~ ' ----- ' ~ me._join(msgs);
-    },
-
-    #
     # Print log message in red color.
     #
     # @param  vector  msgs
     # @return void
     #
     _red: func(msgs) {
-        logprint(MY_LOG_LEVEL, globals.string.color(me._RED, me._getFullMessage(msgs)));
+        me._logColor(msgs, me._RED);
     },
 
     #
@@ -124,7 +114,7 @@ var Log = {
     # @return void
     #
     _green: func(msgs) {
-        logprint(MY_LOG_LEVEL, globals.string.color(me._GREEN, me._getFullMessage(msgs)));
+        me._logColor(msgs, me._GREEN);
     },
 
     #
@@ -134,7 +124,28 @@ var Log = {
     # @return void
     #
     _yellow: func(msgs) {
-        logprint(MY_LOG_LEVEL, globals.string.color(me._YELLOW, me._getFullMessage(msgs)));
+        me._logColor(msgs, me._YELLOW);
+    },
+
+    #
+    # Print log message with given color.
+    #
+    # @param  vector  msgs
+    # @param  string  color
+    # @return void
+    #
+    _logColor: func(msgs, color) {
+        logprint(MY_LOG_LEVEL, globals.string.color(color, me._getFullMessage(msgs)));
+    },
+
+    #
+    # Get full log message.
+    #
+    # @param  vector  msgs
+    # @return string
+    #
+    _getFullMessage: func(msgs) {
+        return g_Addon.name ~ ' ----- ' ~ me._join(msgs);
     },
 
     #
