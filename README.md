@@ -8,7 +8,7 @@ This is a Framework project containing a set of classes and mechanisms to help c
 1. [Features in brief](#features-in-brief)
 2. [How to install](#how-to-install)
 3. [How to use it](#how-to-use-it)
-4. [Hooks](#hooks)
+4. [Application Hooks](#application-hooks)
 5. [Reload add-on and `.env` file](#reload-add-on-and-env-file)
 6. [Canvas Dialog](#canvas-dialog)
     1. [`PersistentDialog` Class](#persistentdialog-class)
@@ -67,22 +67,20 @@ Alternatively, you can also download [Canvas Skeleton](https://github.com/PlayeR
 
 Copy the contents of this framework's `/framework/addon-main.nas` file and paste it into your add-on's `/addon-main.nas` file and make the following modifications:
 
-1. Replace the entry `io.include('nasal/App.nas');` with `io.include('framework/nasal/App.nas');`.
+1. Replace the entry `io.include('nasal/Application.nas');` with `io.include('framework/nasal/Application.nas');`.
 2. In the `.gitignore` file, add a line with the `.env` entry.
 
-## Hooks
+## Application Hooks
 
-Now your `/addon-main.nas` file (your add-on's, not the framework's) should contain a `Hooks` hash with the functions to fill in. Each function in `Hooks` is optional, and if you don't need one, you can remove it entirely. If necessary, the `/framework/addon-main.nas` file will contain the entire template from which you can copy.
+Now your `/addon-main.nas` file (your add-on's, not the framework's) should contain a `main` function where is using `Application` class with some hooks functions to fill in. Each hook function is optional, and if you don't need one, you can remove it entirely. If necessary, the `/framework/addon-main.nas` file will contain the entire template from which you can copy.
 
-1. `filesExcludedFromLoading` ─ here you can specify vector as a list of Nasal files to be excluded from loading (by default the framework automatically loads almost everything). Files must be specified with a path relative to the add-on's root directory and must start with `/` (where `/` represents the add-on's root directory). This can be useful if you don't use a certain Nasal file, but you also don't want to remove it from your project.
+1. `hookFilesExcludedFromLoading` ─ here you can specify vector as a list of Nasal files to be excluded from loading (by default the framework automatically loads almost everything). Files must be specified with a path relative to the add-on's root directory and must start with `/` (where `/` represents the add-on's root directory). This can be useful if you don't use a certain Nasal file, but you also don't want to remove it from your project.
 
-2. `onInit` ─ this function will be called by the framework upon initialization. Here, you can instantiate your objects, but not those related to Canvas. This could be, for example, some logic in your add-on.
+2. `hookOnInit` ─ this function will be called by the framework upon initialization. Here, you can instantiate your objects, but not those related to Canvas. This could be, for example, some logic in your add-on.
 
-3. `onInitCanvas` ─ this function will be called by the framework when it's time to initialize the Canvas objects ─ this will happen 3 seconds after `onInit()`. Here you can instantiate your windows in Canvas.
+3. `hookOnInitCanvas` ─ this function will be called by the framework when it's time to initialize the Canvas objects ─ this will happen 3 seconds after `hookOnInit()`. Here you can instantiate your windows in Canvas.
 
-4. `onUninit` ─ this function will be called by the framework when the add-on is restarted. This should only happen during add-on development. During normal use of the add-on, the user should not be able to restart the add-on.
-
-5. `excludedMenuNamesForEnabled` ─ a very specific function to keep the given menu items disabled after loading the Canvas (see [Deferring Canvas loading](#deferring-canvas-loading)).
+4. `hookExcludedMenuNamesForEnabled` ─ a very specific function to keep the given menu items disabled after loading the Canvas (see [Deferring Canvas loading](#deferring-canvas-loading)).
 
 ## Reload add-on and `.env` file
 
@@ -94,7 +92,7 @@ You can also use the multi-key command (default `:Yarfr`) to restart the Nasal f
 
 Please note that when entering a multi-key command, suggestions do not work.
 
-If you're not interested in this at all and don't want the add-on to load the Nasal classes associated with the `.env` file, you can disable this mechanism entirely. In the `/addon-main.nas` file, in the `main` function, before calling `App.load()`, add the entry `Config.dev.useEnvFile = false;`.
+If you're not interested in this at all and don't want the add-on to load the Nasal classes associated with the `.env` file, you can disable this mechanism entirely. In the `/addon-main.nas` file, in the `main` function, before calling `Application.create()`, add the entry `Config.dev.useEnvFile = false;`.
 
 ## Canvas Dialog
 
@@ -252,7 +250,7 @@ To avoid this, the add-on defers the creation of its `PersistentDialog` windows 
 
 This approach also requires disabling any menu items that open Canvas windows until those windows have been created. Otherwise, clicking such a menu item could try to show a non-existent Canvas window and cause the add-on to crash. Therefore, the menu item that operates on the Persistent dialog should have the `<name>` tag set with some unique name (see the `/addon-menubar-items.xml` file).
 
-The framework will first disable all menu items that contain the `<name>` tag, and then automatically re-enable them after the `onInitCanvas()` hook is called, unless you've specified the names of menu items that you don't want to be automatically re-enabled in the `excludedMenuNamesForEnabled()` hook. This can be useful if you need to manually control menu re-enablement due to other factors. In that case, you should call `gui.menuEnable('your-name-of-menu-item', true);` in the appropriate place in your code.
+The framework will first disable all menu items that contain the `<name>` tag, and then automatically re-enable them after the `onInitCanvas` hook is called, unless you've specified the names of menu items that you don't want to be automatically re-enabled in the `excludedMenuNamesForEnabled` hook. This can be useful if you need to manually control menu re-enablement due to other factors. In that case, you should call `gui.menuEnable('your-name-of-menu-item', true);` in the appropriate place in your code.
 
 If aircraft implementations improve, or if FlightGear introduces a proper solution, this delay will no longer be necessary.
 
@@ -295,10 +293,10 @@ your-addon/
 
 ## Namespaces
 
-The namespace into which the add-on's additional Nasal files will be loaded it will be a namespace created by FlightGear, in the format `__addon[your-addon-id]__`, where `your-addon-id` is the ID of your add-on specified in the `/addon-metadata.xml` file in `<identifier>` tag. To access this namespace from `globals` namespace, you need to refer to it as follows: `globals[‘__addon[your-addon-id]__’]`, what will be needed, for example, to execute your code from the menu item (`/addon-menubar-items.xml` file). This is an inconvenient and long name to use, so if you want, you can create a global alias for it. This namespace alias can be passed as the second argument to the `App.load()` function, e.g.:
+The namespace into which the add-on's additional Nasal files will be loaded it will be a namespace created by FlightGear, in the format `__addon[your-addon-id]__`, where `your-addon-id` is the ID of your add-on specified in the `/addon-metadata.xml` file in `<identifier>` tag. To access this namespace from `globals` namespace, you need to refer to it as follows: `globals[‘__addon[your-addon-id]__’]`, what will be needed, for example, to execute your code from the menu item (`/addon-menubar-items.xml` file). This is an inconvenient and long name to use, so if you want, you can create a global alias for it. This namespace alias can be passed as the second argument to the `Application.create()` function, e.g.:
 
 ```nasal
-App.load(addon, 'yourAddon');
+Application.create(addon, 'yourAddon');
 ```
 
 Here, of course, change the name `yourAddon` to something that reflects your addon and is unique to the entire FlightGear project. Now, in the `/addon-menubar-items.xml` file, you can refer to the add-on variables like this: `yourAddon.g_AboutDialog.show();`, which greatly simplifies the code.

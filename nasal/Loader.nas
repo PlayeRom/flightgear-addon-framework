@@ -138,7 +138,7 @@ var Loader = {
             subDir ~ '/addon-main.nas', # It may repeat, but it doesn't matter, it will be there once in the hash
             subDir ~ '/nasal/Loader.nas',
             subDir ~ '/nasal/Config.nas',
-            subDir ~ '/nasal/App.nas',
+            subDir ~ '/nasal/Application.nas',
             subDir ~ '/nasal/Boolean.nas',
             subDir ~ '/nasal/Dev/DevEnv.nas',
             subDir ~ '/nasal/Dev/DevMode.nas',
@@ -192,11 +192,7 @@ var Loader = {
     # @return void
     #
     _excludedByHookFunc: func {
-        if (!g_isHook('filesExcludedFromLoading')) {
-            return;
-        }
-
-        var excludedFiles = Hooks.filesExcludedFromLoading();
+        var excludedFiles = Application.callHook('filesExcludedFromLoading', []);
 
         if (isvec(excludedFiles)) {
             foreach (var file; excludedFiles) {

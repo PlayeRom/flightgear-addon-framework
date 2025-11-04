@@ -26,14 +26,10 @@ var Bootstrap = {
     init: func {
         g_VersionChecker = VersionChecker.make();
 
-        if (g_isHook('onInit')) {
-            Hooks.onInit();
-        }
+        Application.callHook('onInit');
 
         me._delayCanvasLoading(func {
-            if (g_isHook('onInitCanvas')) {
-                Hooks.onInitCanvas();
-            }
+            Application.callHook('onInitCanvas');
 
             # Check the version at the end, because dialogs must first register
             # their callbacks to VersionChecker in their constructors.
@@ -47,15 +43,11 @@ var Bootstrap = {
     # @return void
     #
     uninit: func {
-        Profiler.clear();
-
         if (g_VersionChecker != nil) {
             g_VersionChecker.del();
         }
 
-        if (g_isHook('onUninit')) {
-            Hooks.onUninit();
-        }
+        Profiler.clear();
     },
 
     #
@@ -77,9 +69,7 @@ var Bootstrap = {
             callback();
 
             # Enable menu items responsible for launching persistent dialogs.
-            var excluded = g_isHook('excludedMenuNamesForEnabled')
-                ? Hooks.excludedMenuNamesForEnabled()
-                : {};
+            var excluded = Application.callHook('excludedMenuNamesForEnabled', {});
 
             menu.toggleItems(true, excluded);
         });
