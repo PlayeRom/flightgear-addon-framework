@@ -33,7 +33,7 @@ io.include('nasal/Application.nas');
 var main = func(addon) {
     logprint(LOG_INFO, addon.name, ' Add-on initialized from path ', addon.basePath);
 
-    Config.useVersionCheck.byMetaData = 1;
+    Config.useVersionCheck.byMetaData = true;
 
     Application
         .hookFilesExcludedFromLoading(func {
