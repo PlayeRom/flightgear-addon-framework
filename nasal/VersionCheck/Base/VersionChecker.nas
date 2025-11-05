@@ -100,7 +100,7 @@ var VersionChecker = {
     # @return void
     #
     checkLastVersion: func {
-        Log.print('VersionChecker.checkLastVersion - version checking is disabled.');
+        Log.warning('VersionChecker.checkLastVersion - version checking is disabled.');
     },
 
     #
@@ -235,7 +235,7 @@ var VersionChecker = {
 
         if (size(errors)) {
             foreach (var error; errors) {
-                Log.print(error);
+                Log.error(error);
             }
 
             return nil;
