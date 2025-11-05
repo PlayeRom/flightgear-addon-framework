@@ -17,7 +17,7 @@ This is a Framework project containing a set of classes and mechanisms to help c
     4. [Deferring Canvas loading](#deferring-canvas-loading)
 7. [Autoloader of Nasal files](#autoloader-of-nasal-files)
 8. [Namespaces](#namespaces)
-9. [Version checker](#version-checker)
+9. [Version Checker](#version-checker)
     1. [Method 1. MetaDataVersionChecker](#method-1-metadataversionchecker)
     2. [Method 2. GitTagVersionChecker](#method-2-gittagversionchecker)
     3. [Version notation for add-on](#version-notation-for-add-on)
@@ -25,7 +25,7 @@ This is a Framework project containing a set of classes and mechanisms to help c
     5. [Class diagram](#class-diagram)
     6. [How to notify the user about a new version?](#how-to-notify-the-user-about-a-new-version)
 10. [Framework Config](#framework-config)
-11. [Global variables](#global-variables)
+11. [Global Variables](#global-variables)
 12. [Class Diagram](#class-diagram-of-framework)
 
 ## Features in brief
@@ -315,7 +315,7 @@ However, Canvas widgets are (and must be) loaded into the `canvas` namespace. Th
 
 The Framework autoloader will automatically load widget files into the `canvas` namespace, provided that your widgets are located in the `Widgets` subdirectory, which will be somewhere in the `/nasal` directory. The suggested directory is `/nasal/Canvas/Widgets/`.
 
-## Version checker
+## Version Checker
 
 The framework allows you to check whether a new version of your add-on has been released. This allows you to inform the user about it. There are 2 ways to check your version, of course you should only choose one.
 
@@ -442,7 +442,7 @@ The framework includes a `nasal/Config.nas` file that configures some of the fra
 
 3. `Config.dev.useEnvFile = false;` ─ by default, the framework will check for the existence of a `/.env` file in your add-on. If you want to completely disable `.env` file checking and thus exclude the related Nasal files from loading, you can use this option with the value `false`.
 
-## Global variables
+## Global Variables
 
 The framework provides the following global variables that you can use in your add-on:
 
@@ -466,7 +466,7 @@ Boolean variable. Defaults to false. Set to true when you set the `DEV_MODE=true
 
 ### `g_VersionChecker`
 
-Object of one of method to check the new version of yor add-on: `/framework/nasal/VersionCheck/GitTagVersionChecker.nas` or `/framework/nasal/VersionCheck/MetaDataVersionChecker.nas`. See [Version checker](#version-checker).
+Object of one of method to check the new version of yor add-on: `/framework/nasal/VersionCheck/GitTagVersionChecker.nas` or `/framework/nasal/VersionCheck/MetaDataVersionChecker.nas`. See [Version Checker](#version-checker).
 
 ### `MY_LOG_LEVEL`
 
