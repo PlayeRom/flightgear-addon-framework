@@ -151,7 +151,7 @@ var AboutDialog = {
             ],
         };
 
-        # Crate your stuff here ...
+        # Create your stuff here ...
         # Dialog already has a canvas.VBoxLayout prepared for adding more elements to the dialog:
         # obj._vbox.addItem(...);
 
@@ -199,7 +199,7 @@ var AboutDialog = {
         # Enable correct handling of window positioning in the center of the screen.
         call(PersistentDialog.setPositionOnCenter, [], obj.parents[1]);
 
-        # Crate your stuff here ...
+        # Create your stuff here ...
         # Dialog already has a canvas.VBoxLayout prepared for adding more elements to the dialog:
         # obj._vbox.addItem(...);
 
