@@ -38,6 +38,16 @@ var Log = {
     },
 
     #
+    # Print error log (in red color) with MY_LOG_LEVEL.
+    #
+    # @param  vector  msgs...  List of texts.
+    # @return void
+    #
+    error: func(msgs...) {
+        me._red(msgs);
+    },
+
+    #
     # Print success log (in green color) with MY_LOG_LEVEL.
     #
     # @param  vector  msgs...  List of texts.
@@ -48,13 +58,13 @@ var Log = {
     },
 
     #
-    # Print error log (in red color) with MY_LOG_LEVEL.
+    # Print error log (in yellow color) with MY_LOG_LEVEL.
     #
     # @param  vector  msgs...  List of texts.
     # @return void
     #
-    error: func(msgs...) {
-        me._red(msgs);
+    warning: func(msgs...) {
+        me._yellow(msgs);
     },
 
     #
