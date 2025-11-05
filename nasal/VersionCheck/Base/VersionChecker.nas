@@ -211,7 +211,7 @@ var VersionChecker = {
         }
 
         me._newVersion = latestVersion.str();
-        Log.alert('New version ', me._newVersion, ' is available');
+        Log.alertWarning('New version ', me._newVersion, ' is available');
 
         # Inform registered callbacks about the new version:
         foreach (var callback; me._callbacks.vector) {
