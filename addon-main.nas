@@ -34,7 +34,7 @@ var main = func(addon) {
     logprint(LOG_INFO, addon.name, ' Add-on initialized from path ', addon.basePath);
 
     # TODO: set config here if needed:
-    # Config.dev.useEnvFile = true;
+    # Config.dev.useEnvFile = false;
     # Config.useVersionCheck.byMetaData = true;
     # Config.useVersionCheck.byGitTag = true;
 
