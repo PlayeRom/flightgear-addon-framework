@@ -494,3 +494,12 @@ By default, it's set to LOG_INFO, so to see the logs from `Log.print()`, you'd h
 ## Class Diagram of Framework
 
 ![alt Class Diagram](docs/class-diagram.png "Class Diagram")
+
+## Add-ons using this Framework
+
+1. [Canvas Skeleton](https://github.com/PlayeRom/flightgear-addon-canvas-skeleton)
+2. [Logbook](https://github.com/PlayeRom/flightgear-addon-logbook)
+3. [Which Runway](https://github.com/PlayeRom/flightgear-addon-which-runway)
+4. [Aerotow Everywhere](https://github.com/PlayeRom/flightgear-addon-aerotow-everywhere)
+5. [Nasal Namespace Browser](https://github.com/PlayeRom/flightgear-addon-nasal-namespace-browser)
+6. [Add-on Menu Aggregator](https://github.com/PlayeRom/flightgear-addon-menu-aggregator)
