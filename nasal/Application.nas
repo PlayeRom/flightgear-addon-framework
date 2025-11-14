@@ -42,7 +42,7 @@ var Application = {
     # @param  func  callback
     # @return hash
     #
-    hookFilesExcludedFromLoading: func (callback) {
+    hookFilesExcludedFromLoading: func(callback) {
         me.filesExcludedFromLoading = callback;
         return me;
     },
