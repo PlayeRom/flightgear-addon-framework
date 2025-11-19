@@ -38,7 +38,7 @@ if (condition)
 
 ### Space Before Parentheses
 
-After words like `if`, `elseif`, `for`, `foreach`, `forindex`, `while`, put a space before `()`. After function names and the keyword `func`, do not put a space before `()`, e.g.: `myFunc();` or `func(param)`.
+After words like `if`, `elsif`, `for`, `foreach`, `forindex`, `while`, put a space before `()`. After function names and the keyword `func`, do not put a space before `()`, e.g.: `myFunc();` or `func(param)`.
 
 ✅ Correct:
 
