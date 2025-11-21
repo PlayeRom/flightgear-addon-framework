@@ -37,6 +37,11 @@ var g_Addon = nil;
 #
 var Application = {
     #
+    # Canvas loading delay in seconds (double).
+    #
+    _initCanvasDelay: 3,
+
+    #
     # Set hook function which return list of files excluded from loading.
     #
     # @param  func  callback
@@ -64,10 +69,13 @@ var Application = {
     # will happen 3 seconds after onInit(). Here windows can be instantiated in Canvas.
     #
     # @param  func  callback
+    # @param  double  delay  Recommended min 3 seconds.
     # @return hash
     #
-    hookOnInitCanvas: func(callback) {
+    hookOnInitCanvas: func(callback, delay = 3) {
         me.onInitCanvas = callback;
+        me._initCanvasDelay = delay;
+
         return me;
     },
 
@@ -124,6 +132,13 @@ var Application = {
         }
 
         return default;
+    },
+
+    #
+    # @return double
+    #
+    getInitCanvasDelay: func {
+        return me._initCanvasDelay;
     },
 
     #
