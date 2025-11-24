@@ -74,7 +74,8 @@ var Loader = {
                 continue;
             }
 
-            if (level == 0 and !(
+            if (level == 0
+                and !(
                        string.imatch(entry, 'nasal')
                     or string.imatch(entry, me._frameworkDir)
                 )
