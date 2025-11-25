@@ -9,6 +9,8 @@
 # under the GNU Public License v3 (GPLv3)
 #
 
+Log.alertSuccess('Loaded by include -> /nasal/Dev/DevEnv');
+
 #
 # Class for handle .env file.
 # This is for development purposes only.

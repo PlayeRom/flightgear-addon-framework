@@ -254,7 +254,7 @@ Also, try to describe each class in the block before the class definition. What 
 #
 # A class for automatically loading Nasal files.
 #
-var Loader = {
+var AutoLoader = {
     # class body...
 };
 ```

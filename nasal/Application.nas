@@ -24,7 +24,7 @@ if (g_FGVersion.lowerThan('2024.1.1')) {
 }
 
 io.include('Config.nas');
-io.include('Loader.nas');
+io.include('AutoLoader.nas');
 io.include('Dev/DevMode.nas');
 
 #
@@ -105,7 +105,7 @@ var Application = {
 
         var namespace = me._getNamespace(aliasNamespace);
 
-        Loader.new().load(g_Addon.basePath, namespace);
+        AutoLoader.new().load(g_Addon.basePath, namespace);
 
         Bootstrap.init();
     },
