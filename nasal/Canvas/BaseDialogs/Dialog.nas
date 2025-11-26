@@ -93,7 +93,7 @@ var Dialog = {
     # @param  int  height
     # @param  string  title
     # @param  bool  resize
-    # @return ghost  Canvas Window object.
+    # @return hash  Canvas Window object.
     #
     _createCanvasWindow: func(width, height, title, resize) {
         return canvas.Window.new(
