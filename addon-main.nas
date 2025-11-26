@@ -22,6 +22,8 @@
 #   https://gitlab.com/flightgear/fgdata/-/blob/next/Docs/README.add-ons
 #
 
+# TODO: In your add-on, change the path to e.g. framework/nasal/Application.nas.
+# io.include('framework/nasal/Application.nas');
 io.include('nasal/Application.nas');
 
 #
