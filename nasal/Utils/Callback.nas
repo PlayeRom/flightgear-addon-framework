@@ -31,7 +31,7 @@ var Callback = {
     #
     # Invoke the callback function.
     #
-    # @param  mixed  arg  Array of parameters.
+    # @param  mixed  arg  List of parameters.
     # @return mixed
     #
     invoke: func {

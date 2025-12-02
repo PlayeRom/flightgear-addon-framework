@@ -17,7 +17,7 @@ var Listeners = {
     # Constants for type parameter:
     #
     ON_CHANGE_ONLY : 0, # Triggered only when value has been changed.
-    ON_WRITE_ALWAYS: 1, # Triggered always on write, event if value has not been changed.
+    ON_WRITE_ALWAYS: 1, # Triggered always on write, event if value has not been changed (default).
     ON_CHILD_CHANGE: 2, # Triggered always, event if child properties has been changed.
 
     #
@@ -50,13 +50,13 @@ var Listeners = {
     # @param  bool  init  If set to true, the listener will additionally be triggered when it is created.
     #                     This argument is optional and defaults to false.
     # @param  int  type  Integer specifying the listener's behavior.
-    #                    0 means that the listener will only trigger when the property is changed.
-    #                    1 means that the trigger will always be triggered when the property is written to.
-    #                    2 will mean that the listener will be triggered even if child properties are modified.
-    #                    This argument is optional and defaults to 1.
+    #                    ON_CHANGE_ONLY = 0 means that the listener will only trigger when the property is changed.
+    #                    ON_WRITE_ALWAYS = 1 means that the trigger will always be triggered when the property is written to.
+    #                    ON_CHILD_CHANGE = 2 will mean that the listener will be triggered even if child properties are modified.
+    #                    This argument is optional and defaults to ON_WRITE_ALWAYS (1).
     # @return int  Listener handler.
     #
-    add: func(node, code, init = 0, type = 1) {
+    add: func(node, code, init = 0, type = Listeners.ON_WRITE_ALWAYS) {
         var handler = setlistener(node, code, init, type);
         me._listeners.append(handler);
 

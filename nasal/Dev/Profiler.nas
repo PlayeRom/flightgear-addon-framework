@@ -26,7 +26,7 @@ var Profiler = {
     #
     start: func(message = nil) {
         me._stack.append({
-            message: message == nil ? '' : 'Context: ' ~ message,
+            message: message == nil ? '' : ' Context: ' ~ message,
             startTime: systime(),
         });
     },
@@ -48,7 +48,7 @@ var Profiler = {
 
         var ms = (systime() - item.startTime) * 1000;
 
-        Log.print('profiler time = ', ms, ' ms. ', item.message);
+        Log.print('profiler time = ', ms, ' ms.', item.message);
 
         return ms;
     },
