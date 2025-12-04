@@ -175,7 +175,7 @@ var PersistentDialog = {
     # @return bool  Return true if function has been called, otherwise return false.
     #
     _callMethodByChild: func(funcName) {
-        if (me._childMe != nil and me._childCls != nil and typeof(me._childCls[funcName]) == 'func') {
+        if (me._childMe != nil and me._childCls != nil and isfunc(me._childCls[funcName])) {
             return call(me._childCls[funcName], [], me._childMe);
         }
 
