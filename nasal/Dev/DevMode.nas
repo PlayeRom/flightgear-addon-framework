@@ -51,9 +51,9 @@ var DevMode = {
     # @return void
     #
     _setMyLogLevel: func(env) {
-        var logLevel = env.getValue('MY_LOG_LEVEL');
+        var logLevel = env.getValue('ADDON_LOG_LEVEL');
         if (logLevel != nil) {
-            MY_LOG_LEVEL = logLevel;
+            ADDON_LOG_LEVEL = logLevel;
         }
     },
 

@@ -10,11 +10,11 @@
 #
 
 #
-# MY_LOG_LEVEL is using in Log.print() to quickly change all logs visibility used in addon's namespace.
-# This variable can be set in the `.env` file using `MY_LOG_LEVEL`, so you should not modify the code here.
+# ADDON_LOG_LEVEL is using in Log.print() to quickly change all logs visibility used in addon's namespace.
+# This variable can be set in the `.env` file using `ADDON_LOG_LEVEL`, so you should not modify the code here.
 # Possible values: LOG_ALERT, LOG_WARN, LOG_INFO, LOG_DEBUG, LOG_BULK.
 #
-var MY_LOG_LEVEL = LOG_INFO;
+var ADDON_LOG_LEVEL = LOG_INFO;
 
 #
 # Log class with own log format.
@@ -28,73 +28,73 @@ var Log = {
     _YELLOW: '33',
 
     #
-    # Print log with MY_LOG_LEVEL.
+    # Print log with ADDON_LOG_LEVEL.
     #
     # @param  vector  msgs...  List of texts.
     # @return void
     #
     print: func(msgs...) {
-        logprint(MY_LOG_LEVEL, me._getFullMessage(msgs));
+        logprint(ADDON_LOG_LEVEL, me._getFullMessage(msgs));
     },
 
     #
-    # Print error log (in red color) with MY_LOG_LEVEL.
+    # Print error log (in red color) with ADDON_LOG_LEVEL.
     #
     # @param  vector  msgs...  List of texts.
     # @return void
     #
     error: func(msgs...) {
-        me._red(MY_LOG_LEVEL, msgs);
+        me._red(ADDON_LOG_LEVEL, msgs);
     },
 
     #
-    # Print success log (in green color) with MY_LOG_LEVEL.
+    # Print success log (in green color) with ADDON_LOG_LEVEL.
     #
     # @param  vector  msgs...  List of texts.
     # @return void
     #
     success: func(msgs...) {
-        me._green(MY_LOG_LEVEL, msgs);
+        me._green(ADDON_LOG_LEVEL, msgs);
     },
 
     #
-    # Print error log (in yellow color) with MY_LOG_LEVEL.
+    # Print error log (in yellow color) with ADDON_LOG_LEVEL.
     #
     # @param  vector  msgs...  List of texts.
     # @return void
     #
     warning: func(msgs...) {
-        me._yellow(MY_LOG_LEVEL, msgs);
+        me._yellow(ADDON_LOG_LEVEL, msgs);
     },
 
     #
-    # Print log in red color with MY_LOG_LEVEL.
+    # Print log in red color with ADDON_LOG_LEVEL.
     #
     # @param  vector  msgs...  List of texts.
     # @return void
     #
     printRed: func(msgs...) {
-        me._red(MY_LOG_LEVEL, msgs);
+        me._red(ADDON_LOG_LEVEL, msgs);
     },
 
     #
-    # Print log in green color with MY_LOG_LEVEL.
+    # Print log in green color with ADDON_LOG_LEVEL.
     #
     # @param  vector  msgs...  List of texts.
     # @return void
     #
     printGreen: func(msgs...) {
-        me._green(MY_LOG_LEVEL, msgs);
+        me._green(ADDON_LOG_LEVEL, msgs);
     },
 
     #
-    # Print log in yellow color with MY_LOG_LEVEL.
+    # Print log in yellow color with ADDON_LOG_LEVEL.
     #
     # @param  vector  msgs...  List of texts.
     # @return void
     #
     printYellow: func(msgs...) {
-        me._yellow(MY_LOG_LEVEL, msgs);
+        me._yellow(ADDON_LOG_LEVEL, msgs);
     },
 
     #
