@@ -56,7 +56,7 @@ var Listeners = {
     #                    This argument is optional and defaults to ON_WRITE_ALWAYS (1).
     # @return int  Listener handler.
     #
-    add: func(node, code, init = 0, type = Listeners.ON_WRITE_ALWAYS) {
+    add: func(node, code, init = 0, type = 1) {
         var handler = setlistener(node, code, init, type);
         me._listeners.append(handler);
 
