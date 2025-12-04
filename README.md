@@ -349,13 +349,13 @@ Requirements:
 
 ### Method 2. GitTagVersionChecker
 
-You can use this version checking method if you host your add-on on GitHab or GitLab and you are using git tags to create releases, where name of tag it's a version number, e.g. `1.2.5` or `v.1.2.5`.
+You can use this version checking method if you host your add-on on GitHab or GitLab and you are using git tags to create releases, where name of tag it's a version number, e.g. `1.2.5` or `v1.2.5`.
 
 The advantage of this approach is that you can upload an `/addon-metadata.xml` file with the upgraded version of the add-on to the main branch, but users won't be notified of the new version until you decide to do so by releasing it. Therefore, it's a method independent of what's in the code.
 
 1. In the `/addon-metadata.xml` file, in the `<code-repository>` field, place the full URL to your repository, e.g., `https://github.com/PlayeRom/flightgear-addon-framework`.
 2. In the `/addon-main.nas` file, in the `main` function, before calling `Application.create()`, add `Config.useVersionCheck.byGitTag = true;`.
-3. Git tags must be in version notation as accepted by the `<version>` field in the `/addon-metadata.xml` file (see below). Optionally, you can prefix the version in the tag with `v.` or `v`, e.g. `v.1.2.5`. or `v1.2.5`.
+3. Git tags must be in version notation as accepted by the `<version>` field in the `/addon-metadata.xml` file (see below). Optionally, you can prefix the version in the tag with `v` or `v.`, e.g. `v1.2.5`. or `v.1.2.5`.
 
 ### Version notation for add-on
 
@@ -393,7 +393,7 @@ Examples from the smallest version to the largest:
 
 ### Version notation for git tags
 
-The git tag assigned to releases should be the same as the add-on version. However, git tag versions may be additionally marked with the prefix `v.` or `v`. For example if your version of add-on is `1.2.5`, you can name the git tag as `v.1.2.5` or `v1.2.5`.
+The git tag assigned to releases should be the same as the add-on version. However, git tag versions may be additionally marked with the prefix `v` or `v.`. For example if your version of add-on is `1.2.5`, you can name the git tag as `v1.2.5` or `v.1.2.5`.
 
 ### Class diagram
 
@@ -455,7 +455,7 @@ The framework includes a `nasal/Config.nas` file that configures some of the fra
 
 1. `Config.useVersionCheck.byMetaData = true;` ─ enables the mechanism for checking for a new version of your add-on by checking the version in the `/addon-metadata.xml` file. Only GitHub, GitLab and FGAddons are supported.
 
-2. `Config.useVersionCheck.byGitTag = true;` ─ enables the mechanism for checking for a new version of your add-on by checking the latest tag in the Git repository, where tag is the version number, e.g. "1.2.5" or "v.1.2.5". Only GitHub and GitLab are supported.
+2. `Config.useVersionCheck.byGitTag = true;` ─ enables the mechanism for checking for a new version of your add-on by checking the latest tag in the Git repository, where tag is the version number, e.g. "1.2.5" or "v1.2.5". Only GitHub and GitLab are supported.
 
 3. `Config.dev.useEnvFile = false;` ─ by default, the framework will check for the existence of a `/.env` file in your add-on. If you want to completely disable `.env` file checking and thus exclude the related Nasal files from loading, you can use this option with the value `false`.
 
@@ -483,7 +483,7 @@ Boolean variable. Defaults to false. Set to true when you set the `DEV_MODE=true
 
 ### `g_VersionChecker`
 
-Object of one of method to check the new version of yor add-on: `/framework/nasal/VersionCheck/GitTagVersionChecker.nas` or `/framework/nasal/VersionCheck/MetaDataVersionChecker.nas`. See [Version Checker](#version-checker).
+Object of one of method to check the new version of your add-on: `/framework/nasal/VersionCheck/GitTagVersionChecker.nas` or `/framework/nasal/VersionCheck/MetaDataVersionChecker.nas`. See [Version Checker](#version-checker).
 
 ### `MY_LOG_LEVEL`
 
