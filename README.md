@@ -58,17 +58,17 @@ your-addon/
 It's recommended using Git and its subtree for this purpose, which will allow you to automatically update the Framework. Assuming your add-on also uses Git, to do this, run:
 
 ```bash
-git subtree add --prefix=framework git@github.com:PlayeRom/flightgear-addon-framework.git v1.0.0 --squash
+git subtree add --prefix=framework git@github.com:PlayeRom/flightgear-addon-framework.git v1.2.1 --squash
 ```
 
-Change `v1.0.0` to the version you want to download.
+Change `v1.2.1` to the version you want to download.
 
 This will automatically create a `/framework` subdirectory in your directory with all the files.
 
-Then, to update the Framework, for example, for the version `v.1.0.1`, simply run:
+Then, to update the Framework, for example, for the version `v2.0.0`, simply run:
 
 ```bash
-git subtree pull --prefix=framework git@github.com:PlayeRom/flightgear-addon-framework.git v1.0.1 --squash -m "Update framework"
+git subtree pull --prefix=framework git@github.com:PlayeRom/flightgear-addon-framework.git v2.0.0 --squash -m "Update Framework to v2.0.0"
 ```
 
 The directory does not have to be called `framework`, you can use any other name, but it cannot be `nasal` and you can't create more nested directories.
@@ -97,7 +97,7 @@ This function will be called by the framework upon initialization. Here, you can
 
 #### `hookOnInitCanvas`
 
-This function will be called by the framework when it's time to initialize the Canvas objects ─ this will happen 3 seconds after `hookOnInit()`. Here you can instantiate your windows in Canvas.
+This function will be called by the framework when it's time to initialize the Canvas objects ─ this will happen 3 seconds after `hookOnInit()`. Here you can instantiate your windows in Canvas. Why this is needed for Canvas is explained in [Deferring Canvas loading](#deferring-canvas-loading).
 
 #### `hookExcludedMenuNamesForEnabled`
 
